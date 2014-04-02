@@ -1,0 +1,268 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width">
+<title>朋道前端开发规范</title>
+<meta name="robots" content="index,follow,noodp,noydir" /> 
+<meta name="description" content="朋道前端开发规范，建议，要求等。" /> 
+<meta name="keywords" content="朋道,前端,开发规范" /> 
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" media="all" href="http://zxdong262.github.io/zui/css/zui.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/demo.css" />
+</head>
+<body>
+
+<div id="ie-warning" class="pd mg aligncenter font24 bold">ie is not supported, please use firefox, chrome, opera, safari or other webkit browsers to visit this page.</div>
+
+<div id="wrapper">
+
+  <h2 class="hide">顶端</h2>
+
+  <h1 id="title" class="aligncenter">朋道前端开发规范</h1>
+  <p>ver 0.1, 持续撰写中...</p>
+
+  <h2>原则</h2>
+  <p>统一的编码规范的目的是保持良好的阅读性，可继承性，规范性，以期望给开发带来便利。并不意味着本代码规范更正确或者更先进。</p>
+
+  <h2>建议</h2>
+  <ul class="list">
+    <li class="li-head">搜索和实验: 有时候搜索未必能找到合适的答案，幸运的是可以很方便的实验前端代码，比如通过
+     <a class="btn btn-a btn-corner shadow font8 btn-inline" rel="external nofollow" href="http://jsfiddle.net">jsfiddle</a>
+    </li>
+
+    <li class="li-head">英文阅读：我确信通过良好的习惯和努力可以做到无障碍阅读英文文档，那就是从现在开始每次都阅读英文文档，遇到不认识的单词立刻查，最终有一天你会发现这次不用查了。</li>
+
+    <li class="li-head">重复的代码应该被抽象出来，写成统一的接口。</li>
+
+    <li class="li-head">validate: typo(笔误，拼写错误，不匹配的标签）常常是百思不得其解的问题所在，css, html validate 非常有助于发现这些错误，同时应该在尽可能的情况下书写符合规范的代码，这有助于避免潜在问题。
+      <a class="btn btn-a btn-corner shadow font8 btn-inline"  rel="external nofollow" href="http://jigsaw.w3.org/css-validator/#validate_by_input+with_options">css validate</a>
+      <a class="btn btn-a btn-corner shadow font8 btn-inline"  rel="external nofollow" href="http://validator.w3.org/#validate_by_input">html validate</a>
+    </li>
+  </ul>
+
+  <h2>代码规范</h2>
+
+  <h3>javascript 代码规范</h3>
+  <pre class="js">
+
+      ///1. 缩进 ，4 个空格，不要用 tab
+      ///2. 每个"," 后空一格
+      ///3. 运算符前后都留有空格
+      function add(a, b) { 
+          return a + b 
+      }
+
+      ///4. 不要使用 “;” ,例外情况是 改行以"()" 或者 "[]"开头,如
+      var a = b
+      ;['apple','cake'].push('book')
+      ;(a === b?a : b) = 15
+
+      ///5. ',' 分割，每个一行时候， ','前置
+      var a = {
+          name: 'cake'
+          ,age: 3
+          ,sex: 'male'
+      }
+
+      var a = 14
+      ,b = 12
+      ,c = 3
+      ,d = 34
+
+      ///6. 元素较短时候，可以在一行
+      var a, b, c
+
+      ///7. 如果 'if(something)' 只有一行，请不使用 '{}'
+      if(true) return a   //yes
+
+      if(true) {return a} //no'
+
+      if(true) return
+      a                   //wrong  
+
+      ///8. 仅使用 '' , 例外是在字符串内部或者 json格式
+      var string = 'cake'
+      ,a = ' div class="blue" '
+
+  </pre>
+
+  <h3>html 代码规范</h3>
+  <pre class="html">
+
+    1. 两格缩进
+
+    <div>
+      <p>vic!</p>
+    </div>
+
+    2.合适的评论和空行分割代码块
+
+    <!-- wrapper -->
+    <div id="wrapper">
+    
+      <!-- header -->
+      <div id="header">
+      ----
+      </div>
+      <!-- /header -->
+      
+      <!-- main -->
+      <div>
+      ----
+      </div id="main">
+      <!-- /main -->
+      
+      <!-- footer -->
+      <div id="footer">
+      ---
+      </div>
+      <!-- /footer -->
+      
+    </div>
+    <!-- /wrapper-->
+
+    3. 命名规则
+    使用有意义的统一的命名规则, 短线链接 或者 大写分割，任取其一，并且保持一致
+
+    <div id="main-content"></div>
+    <div id="mainContent"></div>
+
+    4. 样式和功能的分离
+    例如btn btn-c 控制样式，通过 btn-close 控制功能
+
+    <a class="btn btn-c btn-close" href="javascript:;"></a>
+
+  </pre>
+
+  <h3>css 代码规范</h3>
+  <pre class="css">
+    /* = common elem
+    -------------------------------------------------------------- */
+    body {
+    	text-shadow:1px 1px rgba(255,255,255,.4);
+    	position: relative;
+    	font-family: Helvetica, Arial, sans-serif, 'Microsoft Yahei';
+    }
+    a {
+    	text-decoration:none;
+    	color:#05c;
+    }
+    p {
+    	margin: 0;
+    }
+    
+    /* = grid
+    -------------------------------------------------------------- */
+    .grid {
+    
+    }
+    .gridx2 .grid-cell {
+    	width:50%;
+    }
+    .gridx3 .grid-cell {
+    	width:33%;
+    }
+    .gridx4 .grid-cell {
+    	width:25%;
+    }
+    .gridx5 .grid-cell {
+    	width:20%;
+    }
+    
+    /* = toolbar
+    -------------------------------------------------------------- */
+    .bar {
+    	position: relative;
+    	width:100%;
+    }
+    .bar-txt {
+    	min-height: 22;
+    	text-align: center;
+    	display: block;
+    	margin: 0 20%;
+    	padding:8px 0 9px;
+    	font-size:18px;
+    	text-overflow: ellipsis;
+    	overflow: hidden;
+    	white-space: nowrap;
+    }
+    .bar .btn-bar-right,
+    .bar .btn-bar-left {
+    	position: absolute;
+    	left:7px;
+    	top:6px;
+    	margin:0;
+    	font-size: 12px;
+    }
+    .bar .btn-bar-right {
+    	left:auto;
+    	right:7px;
+    }
+    .header-fixed {
+    	position: fixed;
+    	left:0;
+    	top:0;
+    }
+    .footer-fixed {
+    	position: fixed;
+    	left:0;
+    	bottom:0;
+    }
+    
+    /* = controlgroup
+    -------------------------------------------------------------- */
+    .controlgroup:after {
+    	clear:both;
+    }
+    .controlgroup .btn-control {
+    	display: inline-block;
+    	float:left;
+    	margin:0;
+    }
+    .controlgroup .btn-control-in {
+    	border-radius:0;
+    	border-left:none;
+    }
+    .controlgroup .btn-control-first {
+    	border-top-right-radius:0;
+    	border-bottom-right-radius:0;
+    }
+    .controlgroup .btn-control-last {
+    	border-left: none;
+    	border-top-left-radius:0;
+    	border-bottom-left-radius:0;
+    }
+  </pre>
+
+  <h3>其他 代码规范</h3>
+  <p>todo..</p>
+
+  
+  <h2 class="aligncenter">关于</h2>
+  <div class="aligncenter">
+    <p></p>
+    <p>本页面发布于github，<a href="https://github.com/zxdong262/ponder/tree/gh-pages">https://github.com/zxdong262/ponder/tree/gh-pages</a></p>
+    <p>Created by <a href="http://html5beta.com">赵旭东</a>, zxd@ponder.com.cn</p>
+    <p>
+      <a href="http://html5beta.com">blog</a> -
+      <a rel="external nofollow" href="http://github.com/zxdong262">github</a> -
+      <a rel="external nofollow" href="http://stackoverflow.com/users/615576/zhao-xudong">stackoverflow</a> -
+      <a rel="external nofollow" href="http://weibo.com/html5beta">weibo</a> - 
+      <a rel="external nofollow" href="mailto:zxdong@gmail.com">email</a> -
+      <a rel="external nofollow" href="javascript:popup({content:'986839138'})">QQ</a>
+    </p>
+    <div id="qrcode" class="pdtb mgtb"></div>
+    <div id="debug"></div>
+  </div>
+
+</div>
+<!--/wrapper --> 
+
+<script src="http://zxdong262.github.io/zui/js/zepto.min.js"></script>
+<script src="http://zxdong262.github.io/zui/js/zui.js"></script>
+<script src="http://zxdong262.github.io/zui/demo/js/jquery.qrcode.min.js"></script>
+<script src="js/demo.js"></script>
+</body>
+</html>
